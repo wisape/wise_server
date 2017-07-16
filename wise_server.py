@@ -253,7 +253,7 @@ if __name__ == '__main__':
     if len(sys.argv) < 2:
         print help_msg
         sys.exit(1)
-    ws = WiseServer('test.conf')
+    ws = WiseServer('/etc/wise_server.conf')
 
     if sys.argv[1] == 'start':
         ws.start()
