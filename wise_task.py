@@ -1,4 +1,4 @@
-import os
+import os, psutil
 import subprocess
 from prettytable import PrettyTable
 import collections
@@ -47,6 +47,11 @@ class WiseTask(object):
 
     def stop(self):
         if self.__is_running():
+            p = psutil.Process(self.process.pid)
+            child = p.children()
+            for c in child:
+                c.kill()
+
             self.process.kill()
             self.process.wait()
 
